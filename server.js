@@ -35,7 +35,7 @@ var listener = app.listen(process.env.PORT||PORT, function () {
 let whoami = {};
 app.get("/api/whoami", function (req, res) { 
   // console.log(req.host);
-  whoami['ipaddress'] = req.connection.remoteAddress;
+  whoami['ipaddress'] = req.ip;
   whoami['language'] = req.headers['accept-language']
   whoami['software'] = req.headers['user-agent']
   res.json(whoami)
