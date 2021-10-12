@@ -32,9 +32,10 @@ var listener = app.listen(process.env.PORT||PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
+let whoami = {}
 app.get("/api/whoami", function (req, res) {  
-  let ip = req.ip
-  res.json({
-    "ipaddress": ip
-  })
+  let ip = req.ips
+  whoami['ipaddress'] = ip;
+  whoami['agung'] = "okee";
+  res.json(whoami)
 })
